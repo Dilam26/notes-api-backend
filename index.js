@@ -68,7 +68,6 @@ app.delete('/api/notes/:id', (request, response) => {
 
 app.post('/api/notes', (request, response) => {
   const note = request.body
-  console.log('Llega a funcion')
   // console.log(note)
   // if (!note || !note.content) {
   //   return response.status(400).json({
@@ -85,9 +84,7 @@ app.post('/api/notes', (request, response) => {
     body: note.body,
     userId: note.userId
   }
-  console.log('Llega aca')
   notes = notes.concat(newNote)
-  console.log(notes)
   response.json(newNote)
 })
 
@@ -98,7 +95,7 @@ app.use((request, response) => {
   })
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
